@@ -40,6 +40,7 @@ export default function StaggerChildren({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const staggerItemVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: {

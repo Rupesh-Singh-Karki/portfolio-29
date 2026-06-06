@@ -125,26 +125,29 @@ export default function About() {
                   <rect x="280" y="291" width="35" height="9" fill="rgba(0,224,255,0.04)" />
 
                   {/* Rain lines */}
-                  {Array.from({ length: 15 }, (_, i) => (
-                    <line
-                      key={`rain-${i}`}
-                      x1={20 + i * 26}
-                      y1={0}
-                      x2={14 + i * 26}
-                      y2={20}
-                      stroke="rgba(255,255,255,0.06)"
-                      strokeWidth="0.5"
-                    >
-                      <animateTransform
-                        attributeName="transform"
-                        type="translate"
-                        values={`0,${-20 + i * 5};-6,300`}
-                        dur={`${1 + Math.random() * 0.8}s`}
-                        repeatCount="indefinite"
-                      />
-                      <animate attributeName="opacity" values="0;0.08;0" dur={`${1 + Math.random() * 0.8}s`} repeatCount="indefinite" />
-                    </line>
-                  ))}
+                  {Array.from({ length: 15 }, (_, i) => {
+                    const dur = `${1 + (((i * 7 + 3) % 10) / 10) * 0.8}s`;
+                    return (
+                      <line
+                        key={`rain-${i}`}
+                        x1={20 + i * 26}
+                        y1={0}
+                        x2={14 + i * 26}
+                        y2={20}
+                        stroke="rgba(255,255,255,0.06)"
+                        strokeWidth="0.5"
+                      >
+                        <animateTransform
+                          attributeName="transform"
+                          type="translate"
+                          values={`0,${-20 + i * 5};-6,300`}
+                          dur={dur}
+                          repeatCount="indefinite"
+                        />
+                        <animate attributeName="opacity" values="0;0.08;0" dur={dur} repeatCount="indefinite" />
+                      </line>
+                    );
+                  })}
 
                   {/* Glow filter */}
                   <defs>

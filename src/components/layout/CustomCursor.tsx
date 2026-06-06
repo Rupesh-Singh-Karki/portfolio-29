@@ -5,16 +5,16 @@ export default function CustomCursor() {
   const outerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
-  const [isTouch, setIsTouch] = useState(false);
+  const [isTouch, setIsTouch] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
+  );
   const [isHovering, setIsHovering] = useState(false);
   const mousePos = useRef({ x: -100, y: -100 });
   const outerPos = useRef({ x: -100, y: -100 });
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Check for touch device
     const touchCheck = window.matchMedia('(pointer: coarse)');
-    setIsTouch(touchCheck.matches);
     const handler = (e: MediaQueryListEvent) => setIsTouch(e.matches);
     touchCheck.addEventListener('change', handler);
     return () => touchCheck.removeEventListener('change', handler);
