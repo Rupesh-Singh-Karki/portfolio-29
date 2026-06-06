@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# Portfolio — Rupesh Singh Karki
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance developer portfolio built with React, TypeScript, Vite, and Framer Motion. Features a dark neon aesthetic with 3D particle effects, smooth animations, and a fully functional contact form.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript** — UI framework
+- **Vite** — Build tool and dev server
+- **Framer Motion** — Animations and page transitions
+- **Three.js** — 3D particle effects in the hero section
+- **Formspree** — Contact form submissions
+- **ESLint** — Code linting
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js ≥ 18
+- npm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/Rupesh-Singh-Karki/portfolio-29.git
+cd portfolio-29
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file in the project root:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
 ```
+
+You can get a free Formspree endpoint at [formspree.io](https://formspree.io).
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable UI components
+│   ├── animations/   # Animation wrappers (FadeInUp, etc.)
+│   ├── layout/       # Navbar, Footer
+│   ├── three/        # Three.js components (particles)
+│   └── ui/           # Buttons, Badges, SectionLabel, etc.
+├── data/             # Static data (projects, experience, skills, etc.)
+├── hooks/            # Custom React hooks
+├── sections/         # Page sections (Hero, About, Contact, etc.)
+├── types/            # TypeScript type definitions
+└── utils/            # Utility functions (Formspree helper)
+```
+
+## CI/CD
+
+A GitHub Actions workflow (`.github/workflows/ci.yml`) runs lint and build checks on every push and pull request to `main`.
+
+## License
+
+MIT

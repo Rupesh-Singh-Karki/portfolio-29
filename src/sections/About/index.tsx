@@ -5,14 +5,14 @@ import Badge from '../../components/ui/Badge';
 import FadeInUp from '../../components/animations/FadeInUp';
 
 const interests = [
-  'Web Performance', 'System Design', 'Rust', 'WebAssembly',
-  'AI/ML', 'Open Source', 'Technical Writing', 'Cloud Architecture',
+  'Web Performance', 'System Design', 'C++', 'Go',
+  'AI/ML', 'Open Source', 'Technical Writing', 'DevOps', 'Backend Systems',
 ];
 
 const stats = [
-  { value: 4, suffix: '+', label: 'Years Experience' },
-  { value: 30, suffix: '+', label: 'Projects Shipped' },
-  { value: 10, suffix: '+', label: 'Certifications' },
+  { value: 1, suffix: '+', label: 'Years Experience' },
+  { value: 9, suffix: '+', label: 'Projects Shipped' },
+  { value: 1, suffix: '+', label: 'Certifications' },
 ];
 
 export default function About() {
@@ -227,16 +227,10 @@ export default function About() {
                 }}
               >
                 <p>
-                  I'm a full-stack developer who thrives at the intersection of
-                  design and engineering. With {'>'}4 years of experience building
-                  web applications, I specialize in creating performant,
-                  accessible, and visually stunning digital experiences.
-                </p>
-                <p>
-                  From architecting microservices to crafting pixel-perfect
-                  interfaces, I bring an obsessive attention to detail and a deep
-                  understanding of the entire stack. I believe great software is
-                  equal parts art and engineering.
+                  I'm a developer skilled in full stack web development, DSA, and AI/ML.
+                  I enjoy building scalable applications, solving complex problems,
+                  and crafting intelligent systems with modern tools like React,
+                  FastAPI, and neural networks.
                 </p>
               </div>
 

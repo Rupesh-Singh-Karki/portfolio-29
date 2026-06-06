@@ -215,7 +215,7 @@ function ProjectCard({
       <div
         style={{
           width: '100%',
-          height: '200px',
+          height: '280px',
           background: `linear-gradient(135deg, var(--bg-surface), var(--bg-elevated))`,
           position: 'relative',
           display: 'flex',
@@ -224,31 +224,45 @@ function ProjectCard({
           overflow: 'hidden',
         }}
       >
-        {/* Project initial as placeholder */}
-        <span
-          style={{
-            fontFamily: "'Bebas Neue', cursive",
-            fontSize: 'var(--text-6xl)',
-            color: 'var(--pink-500)',
-            opacity: 0.1,
-          }}
-          aria-hidden="true"
-        >
-          {project.name.charAt(0)}
-        </span>
+        {project.thumbnail ? (
+          <img
+            src={project.thumbnail}
+            alt={`${project.name} thumbnail`}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'top',
+            }}
+          />
+        ) : (
+          <span
+            style={{
+              fontFamily: "'Bebas Neue', cursive",
+              fontSize: 'var(--text-6xl)',
+              color: 'var(--pink-500)',
+              opacity: 0.1,
+            }}
+            aria-hidden="true"
+          >
+            {project.name.charAt(0)}
+          </span>
+        )}
 
         {/* Status badge */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 'var(--space-3)',
-            right: 'var(--space-3)',
-          }}
-        >
-          <Badge variant={project.status === 'Live' ? 'success' : project.status === 'In Progress' ? 'warning' : 'pink'}>
-            {project.status}
-          </Badge>
-        </div>
+        {project.status && (
+          <div
+            style={{
+              position: 'absolute',
+              top: 'var(--space-3)',
+              right: 'var(--space-3)',
+            }}
+          >
+            <Badge variant={project.status === 'Live' ? 'success' : project.status === 'In Progress' ? 'warning' : 'pink'}>
+              {project.status}
+            </Badge>
+          </div>
+        )}
 
         {project.featured && (
           <div
@@ -436,9 +450,11 @@ function ProjectModal({
         </button>
 
         {/* Status */}
-        <div style={{ marginBottom: 'var(--space-4)' }}>
-          <Badge variant={project.status === 'Live' ? 'success' : 'warning'}>{project.status}</Badge>
-        </div>
+        {project.status && (
+          <div style={{ marginBottom: 'var(--space-4)' }}>
+            <Badge variant={project.status === 'Live' ? 'success' : 'warning'}>{project.status}</Badge>
+          </div>
+        )}
 
         <h2
           id="project-modal-title"

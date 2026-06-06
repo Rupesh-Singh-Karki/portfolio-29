@@ -21,10 +21,10 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 const socialLinks = [
-  { icon: GithubIcon, href: 'https://github.com', label: 'Visit GitHub profile' },
-  { icon: LinkedinIcon, href: 'https://linkedin.com', label: 'Visit LinkedIn profile' },
-  { icon: TwitterXIcon, href: 'https://x.com', label: 'Visit X profile' },
-  { icon: Mail, href: 'mailto:hello@rupeshkarki.dev', label: 'Send an email' },
+  { icon: GithubIcon, href: 'https://github.com/Rupesh-Singh-Karki', label: 'Visit GitHub profile' },
+  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/rupesh-singh-karki-552226363/', label: 'Visit LinkedIn profile' },
+  { icon: TwitterXIcon, href: 'https://x.com/rupesh_singh_k', label: 'Visit X profile' },
+  { icon: Mail, href: 'karkisinghrupesh@gmail.com', label: 'Send an email' },
 ];
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
@@ -177,7 +177,7 @@ export default function Contact() {
                 }}
               >
                 <a
-                  href="mailto:hello@rupeshkarki.dev"
+                  href="mailto:karkisinghrupesh@gmail.com"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -191,7 +191,7 @@ export default function Contact() {
                   }}
                 >
                   <Mail size={18} style={{ color: 'var(--pink-500)' }} aria-hidden="true" />
-                  hello@rupeshkarki.dev
+                  karkisinghrupesh@gmail.com
                 </a>
                 <div
                   style={{

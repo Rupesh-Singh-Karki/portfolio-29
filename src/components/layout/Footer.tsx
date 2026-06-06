@@ -2,10 +2,10 @@ import { Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterXIcon } from '../ui/SocialIcons';
 
 const socialLinks = [
-  { icon: GithubIcon, href: 'https://github.com', label: 'Visit GitHub profile' },
-  { icon: LinkedinIcon, href: 'https://linkedin.com', label: 'Visit LinkedIn profile' },
-  { icon: TwitterXIcon, href: 'https://x.com', label: 'Visit X profile' },
-  { icon: Mail, href: 'mailto:hello@rupeshkarki.dev', label: 'Send an email' },
+  { icon: GithubIcon, href: 'https://github.com/Rupesh-Singh-Karki', label: 'Visit GitHub profile' },
+  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/rupesh-singh-karki-552226363/', label: 'Visit LinkedIn profile' },
+  { icon: TwitterXIcon, href: 'https://x.com/rupesh_singh_k', label: 'Visit X profile' },
+  { icon: Mail, href: 'mailto:karkisinghrupesh@gmail.com', label: 'Send an email' },
 ];
 
 const navLinks = [

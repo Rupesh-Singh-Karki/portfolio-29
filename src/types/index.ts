@@ -30,13 +30,13 @@ export interface Project {
   githubUrl: string;
   liveUrl?: string;
   featured: boolean;
-  status: 'Live' | 'In Progress' | 'Archived';
+  status?: 'Live' | 'In Progress' | 'Archived';
 }
 
 export interface Skill {
   name: string;
   icon: string;
-  category: 'Frontend' | 'Backend' | 'DevOps' | 'Tools';
+  category: 'Frontend' | 'Backend' | 'AI/ML' | 'Databases' | 'DevOps' | 'Tools';
 }
 
 export interface Certification {

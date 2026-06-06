@@ -5,12 +5,14 @@ import FadeInUp from '../../components/animations/FadeInUp';
 import { skills } from '../../data/skills';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
-const categories = ['Frontend', 'Backend', 'DevOps', 'Tools'] as const;
+const categories = ['Frontend', 'Backend', 'AI/ML', 'Databases', 'DevOps', 'Tools'] as const;
 const categoryIcons: Record<string, string> = {
-  Frontend: '&#x2756;',
-  Backend: '&#x2699;',
-  DevOps: '&#x2601;',
-  Tools: '&#x2692;',
+  Frontend: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+  Backend: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>',
+  'AI/ML': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22"/><path d="M12 2a4 4 0 0 0-4 4c0 1.95 1.4 3.58 3.25 3.93"/><path d="M8.56 9.8a3.5 3.5 0 1 0-1.4 5.78"/><path d="M15.44 9.8a3.5 3.5 0 1 1 1.4 5.78"/></svg>',
+  Databases: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>',
+  DevOps: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>',
+  Tools: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
 };
 
 // Build marquee rows
@@ -44,7 +46,7 @@ export default function Skills() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
+              gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 'var(--space-4)',
               marginBottom: 'var(--space-16)',
             }}
@@ -71,8 +73,10 @@ export default function Skills() {
                   >
                     <span
                       style={{
-                        fontSize: '20px',
-                        color: cat === 'Frontend' || cat === 'Tools' ? 'var(--pink-500)' : 'var(--cyan-500)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: ['Frontend', 'AI/ML', 'DevOps'].includes(cat) ? 'var(--pink-500)' : 'var(--cyan-500)',
                       }}
                       aria-hidden="true"
                       dangerouslySetInnerHTML={{ __html: categoryIcons[cat] }}
@@ -113,6 +117,11 @@ export default function Skills() {
       </div>
 
       <style>{`
+        @media (max-width: 1023px) and (min-width: 768px) {
+          .skills-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
         @media (max-width: 767px) {
           .skills-grid {
             grid-template-columns: 1fr !important;
@@ -189,10 +198,14 @@ function MarqueeRow({
               }}
               className="marquee-icon"
               onError={(e) => {
-                // Fallback to plain variant
                 const img = e.currentTarget;
-                if (!img.src.includes('-plain')) {
-                  img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}-plain.svg`;
+                const base = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}`;
+                if (img.src.includes('-original.svg')) {
+                  img.src = `${base}-plain.svg`;
+                } else if (img.src.includes('-plain.svg') && !img.src.includes('-wordmark')) {
+                  img.src = `${base}-original-wordmark.svg`;
+                } else if (img.src.includes('-original-wordmark')) {
+                  img.src = `${base}-plain-wordmark.svg`;
                 }
               }}
             />

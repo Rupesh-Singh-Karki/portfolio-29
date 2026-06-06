@@ -81,8 +81,8 @@ export default function Hero() {
           }}
         />
         {[
-          { icon: GithubIcon, href: 'https://github.com', label: 'Visit GitHub profile' },
-          { icon: LinkedinIcon, href: 'https://linkedin.com', label: 'Visit LinkedIn profile' },
+          { icon: GithubIcon, href: 'https://github.com/Rupesh-Singh-Karki', label: 'Visit GitHub profile' },
+          { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/rupesh-singh-karki-552226363/', label: 'Visit LinkedIn profile' },
         ].map(({ icon: Icon, href, label }) => (
           <motion.a
             key={href}
@@ -149,7 +149,7 @@ export default function Hero() {
                   marginBottom: 'var(--space-6)',
                 }}
               >
-                SOFTWARE DEVELOPER
+                RUPESH SINGH KARKI
                 <span
                   style={{
                     display: 'inline-block',
@@ -189,7 +189,7 @@ export default function Hero() {
                 marginBottom: 'var(--space-8)',
               }}
             >
-              Full-stack developer crafting high-performance web experiences
+              A developer crafting high-performance web experiences
               with modern technologies and obsessive attention to detail.
             </motion.p>
 
